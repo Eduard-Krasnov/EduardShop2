@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="EduardShop2.Api/EduardShop2.Api.csproj" />
+  <Project Path="EduardShop2.Application/EduardShop2.Application.csproj" />
+  <Project Path="EduardShop2.Domain/EduardShop2.Domain.csproj" />
+  <Project Path="EduardShop2.Infrastructure/EduardShop2.Infrastructure.csproj" />
+</Solution>
