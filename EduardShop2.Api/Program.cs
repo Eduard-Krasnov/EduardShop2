@@ -47,6 +47,14 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider
+        .GetRequiredService<ShopDbContext>();
+
+    dbContext.Database.Migrate();
+}
+
 app.UseCors("AllowAngular");
 
 app.MapControllers();
