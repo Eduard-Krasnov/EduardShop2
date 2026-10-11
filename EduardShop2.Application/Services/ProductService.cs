@@ -47,4 +47,9 @@ public class ProductService
         return await _productRepository.UpdateAsync(product);
     }
 
+    public async Task<bool> DeleteAsync(int id)
+    {
+        return await _productRepository.DeleteAsync(id);
+    }
+
 }
