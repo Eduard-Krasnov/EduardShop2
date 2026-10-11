@@ -36,4 +36,23 @@ public class ProductsController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(
+    [FromRoute] int id,
+    [FromBody] UpdateProductDto dto)
+    {
+        try
+        {
+            var updated = await _productService.UpdateAsync(id, dto);
+            if (updated == null)
+                return NotFound();
+
+            return Ok(updated);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }

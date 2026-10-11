@@ -32,4 +32,19 @@ public class ProductService
         return await _productRepository.AddAsync(product);
     }
 
+    public async Task<Product?> UpdateAsync(int id, UpdateProductDto dto)
+    {
+        if (string.IsNullOrWhiteSpace(dto.Name) || dto.Price <= 0)
+            throw new ArgumentException("Invalid product data");
+
+        var product = await _productRepository.GetByIdAsync(id);
+        if (product == null)
+            return null;
+
+        product.Name = dto.Name;
+        product.Price = dto.Price;
+
+        return await _productRepository.UpdateAsync(product);
+    }
+
 }
