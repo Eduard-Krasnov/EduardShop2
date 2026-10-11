@@ -3,4 +3,5 @@
   <Project Path="EduardShop2.Application/EduardShop2.Application.csproj" />
   <Project Path="EduardShop2.Domain/EduardShop2.Domain.csproj" />
   <Project Path="EduardShop2.Infrastructure/EduardShop2.Infrastructure.csproj" />
+  <Project Path="Tests/EduardShop2.Tests.csproj" Id="cd0960b2-a49b-4f61-8649-21b68fbba16d" />
 </Solution>

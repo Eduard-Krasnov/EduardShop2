@@ -1,4 +1,5 @@
-﻿using EduardShop2.Application.Interfaces;
+﻿using EduardShop2.Application.DTOs;
+using EduardShop2.Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EduardShop2.Api.Controllers;
@@ -7,18 +8,32 @@ namespace EduardShop2.Api.Controllers;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly IProductRepository _productRepository;
+    private readonly ProductService _productService;
 
-    public ProductsController(IProductRepository productRepository)
+    public ProductsController(ProductService productService)
     {
-        _productRepository = productRepository;
+        _productService = productService;
     }
 
     [HttpGet]
     public async Task<ActionResult> GetAll()
     {
-        var products = await _productRepository.GetAllAsync();
+        var products = await _productService.GetAllAsync();
 
         return Ok(products);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(CreateProductDto dto)
+    {
+        try
+        {
+            var product = await _productService.CreateAsync(dto);
+            return StatusCode(201, product);
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }

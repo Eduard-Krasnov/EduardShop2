@@ -1,4 +1,5 @@
 using EduardShop2.Application.Interfaces;
+using EduardShop2.Application.Services;
 using EduardShop2.Infrastructure.Data;
 using EduardShop2.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,8 @@ builder.Services.AddDbContext<ShopDbContext>(options =>
 });
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+builder.Services.AddScoped<ProductService>();
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
